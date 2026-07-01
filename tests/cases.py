@@ -17,7 +17,7 @@
 from dataclasses import dataclass
 from typing import Any
 
-from arcticfreeze import ConverterNotFoundError, FrozenDict
+from ghga_arcticfreeze import ConverterNotFoundError, FrozenDict
 
 
 @dataclass(frozen=True)

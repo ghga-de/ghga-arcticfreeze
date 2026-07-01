@@ -1,4 +1,5 @@
-# Copyright 2024 Kersten Henrik Breuer
+# Copyright 2021 - 2026 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# for the German Human Genome-Phenome Archive (GHGA)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,20 +13,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""A package to produce deeply (recursively) frozen Python data structures."""
-
-from importlib.metadata import version
-
-from ._internal._converters import STANDARD_CONVERTERS, Converter
-from ._internal.freeze import ConverterNotFoundError, freeze
-from ._internal.frozendict import FrozenDict
-
-__all__ = [
-    "ConverterNotFoundError",
-    "freeze",
-    "STANDARD_CONVERTERS",
-    "Converter",
-    "FrozenDict",
-]
-
-__version__ = version(__package__)
+"""Fixtures that are used in both integration and unit tests."""

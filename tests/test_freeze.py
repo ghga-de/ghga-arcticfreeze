@@ -15,8 +15,8 @@
 """Test the freeze function."""
 
 import pytest
-from arcticfreeze import freeze
 
+from ghga_arcticfreeze import freeze
 from tests.cases import INVALID_CASES, VALID_CASES, InvalidTestCase, ValidTestCase
 
 

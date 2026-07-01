@@ -15,13 +15,12 @@
 """High-level functions for deep freezing mutable objects."""
 
 from collections.abc import Sequence
-from typing import Optional
 
-from arcticfreeze._internal._converters import (
+from ghga_arcticfreeze._internal._converters import (
     STANDARD_CONVERTERS,
     Converter,
 )
-from arcticfreeze._internal.resolve import (
+from ghga_arcticfreeze._internal.resolve import (
     ConverterNotFoundError,  # noqa: F401 - a shortcut
     get_converter_by_type,
 )
@@ -73,7 +72,7 @@ def custom_freeze(
 def freeze(
     obj: object,
     *,
-    add_converters: Optional[Sequence[Converter]] = None,
+    add_converters: Sequence[Converter] | None = None,
     by_superclass: bool = False,
 ) -> object:
     """Deep freeze the provided object. If the provided object is a nested data

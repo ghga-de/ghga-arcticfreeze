@@ -19,8 +19,9 @@ from typing import Any
 
 import pydantic
 import pytest
-from arcticfreeze import FrozenDict
 from pydantic import BaseModel, ConfigDict
+
+from ghga_arcticfreeze import FrozenDict
 
 
 def test_frozen_dict_validation():

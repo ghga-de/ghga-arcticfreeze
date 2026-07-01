@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-# Copyright 2024 Kersten Henrik Breuer
+# Copyright 2021 - 2026 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# for the German Human Genome-Phenome Archive (GHGA)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,6 +23,7 @@ from functools import partial
 from pathlib import Path
 
 from packaging.requirements import Requirement
+
 from script_utils import cli, lock_deps
 
 REPO_ROOT_DIR = Path(__file__).parent.parent.resolve()
@@ -47,7 +49,7 @@ def get_repl_value(match, dependencies: dict[str, str], outdated_hooks: list[str
 
         # Use the v prefix if it was used before
         if ver.startswith("v"):
-            new_ver = ver[0] + new_ver
+            new_ver = f"v{new_ver}"
 
         # Make a list of what's outdated
         if new_ver != ver:

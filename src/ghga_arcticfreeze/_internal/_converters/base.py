@@ -14,8 +14,9 @@
 
 """Classes, constants, and utils for defining converters."""
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable, Final, Generic, TypeVar
+from typing import Final, TypeVar
 
 DEFAULT_PRIORITY: Final = 0
 STANDARD_PRIMITIVE_PRIORITY: Final = 200
@@ -26,7 +27,7 @@ InputObject = TypeVar("InputObject")
 
 
 @dataclass(frozen=True)
-class Converter(Generic[InputObject]):
+class Converter[InputObject]:
     """A class describing how to convert a (mutable) object to an immutable counterpart.
 
     Attributes:
