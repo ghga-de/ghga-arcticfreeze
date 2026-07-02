@@ -36,17 +36,17 @@ STANDARD_PRIMITIVE_CONVERTERS: Final[Sequence[Converter]] = tuple(
 
 
 def convert_sequence(obj: Sequence, freeze_child: Callable) -> tuple:
-    """A convert a sequence object."""
+    """Convert a sequence object."""
     return tuple(freeze_child(child) for child in obj)
 
 
 def convert_set_like(obj: Iterable, freeze_child: Callable) -> set:
-    """A convert a set-like object."""
+    """Convert a set-like object."""
     return set(freeze_child(child) for child in obj)
 
 
 def convert_mapping(obj: Mapping, freeze_child: Callable) -> FrozenDict:
-    """A convert a mapping object."""
+    """Convert a mapping object."""
     return FrozenDict(
         {freeze_child(key): freeze_child(value) for key, value in obj.items()}
     )
