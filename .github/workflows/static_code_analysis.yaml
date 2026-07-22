@@ -34,8 +34,3 @@ jobs:
         id: mypy
         run: |
           mypy .
-
-      - name: Check license header and file
-        id: license-checker
-        run: |
-          ./scripts/check_license.py

@@ -13,6 +13,7 @@ scripts/update_readme.py
 .github/workflows/ci_release.yaml
 .github/workflows/ci_workflow_dispatch.yaml
 .github/workflows/check_readme.yaml
+.github/workflows/static_code_analysis.yaml
 .readme_generation/readme_template.md
 .readme_generation/README.md
 
