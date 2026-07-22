@@ -45,7 +45,7 @@ def convert_sequence(obj: Sequence, freeze_child: Callable) -> tuple:
 
 def convert_set_like(obj: Iterable, freeze_child: Callable) -> set:
     """Convert a set-like object."""
-    return set(freeze_child(child) for child in obj)
+    return {freeze_child(child) for child in obj}
 
 
 def convert_mapping(obj: Mapping, freeze_child: Callable) -> FrozenDict:

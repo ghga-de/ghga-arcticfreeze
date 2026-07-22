@@ -15,3 +15,5 @@ scripts/update_readme.py
 .github/workflows/check_readme.yaml
 .readme_generation/readme_template.md
 .readme_generation/README.md
+
+LICENSE
