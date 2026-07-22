@@ -1,4 +1,8 @@
-[![tests](https://github.com/kerstenbreuer/arcticfreeze/actions/workflows/tests.yaml/badge.svg)](https://github.com/kerstenbreuer/arcticfreeze/actions/workflows/tests.yaml)
+[![tests](https://github.com/ghga-de/ghga-arcticfreeze/actions/workflows/tests.yaml/badge.svg)](https://github.com/ghga-de/ghga-arcticfreeze/actions/workflows/tests.yaml)
+
+This is a fork of https://github.com/KerstenBreuer/arcticfreeze.
+Many thanks to Kersten Breuer for the initial implementation.
+
 
 # articfreeze
 
