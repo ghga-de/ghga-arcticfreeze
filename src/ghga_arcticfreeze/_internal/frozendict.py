@@ -65,6 +65,26 @@ class FrozenDict(immutabledict[_K, _V_co]):
 if PYDANTIC_V2_INSTALLED:
     from pydantic import GetCoreSchemaHandler
     from pydantic_core import SchemaSerializer, core_schema
+    from pydantic_core.core_schema import (
+        SerializationInfo,
+        SerializerFunctionWrapHandler,
+    )
+
+    def _serialize_frozendict(
+        value: Any,
+        handler: SerializerFunctionWrapHandler,
+        info: SerializationInfo,
+    ) -> Any:
+        """Serialize a FrozenDict depending on the serialization mode.
+
+        In JSON mode the FrozenDict is converted to a plain ``dict`` and its
+        contents are serialized recursively (via ``handler``) into
+        JSON-compatible types. In Python mode the FrozenDict is returned
+        unchanged.
+        """
+        if info.mode_is_json():
+            return handler(dict(value))
+        return value
 
     def get_pydantic_core_schema(
         cls, source: Any, handler: GetCoreSchemaHandler
@@ -86,57 +106,29 @@ if PYDANTIC_V2_INSTALLED:
             Mapping[key_type, value_type]  # type: ignore
         )
 
-        python_serialization_schema = core_schema.plain_serializer_function_ser_schema(
-            lambda x: x, return_schema=core_schema.any_schema()
+        serialization = core_schema.wrap_serializer_function_ser_schema(
+            _serialize_frozendict,
+            schema=validation_schema,
+            info_arg=True,
         )
-        python_schema = core_schema.no_info_after_validator_function(
+
+        return core_schema.no_info_after_validator_function(
             function=cls,
             schema=validation_schema,
-            serialization=python_serialization_schema,
+            serialization=serialization,
         )
-
-        json_serialization_schema = core_schema.plain_serializer_function_ser_schema(
-            dict, return_schema=validation_schema, when_used="json"
-        )
-        json_schema = core_schema.no_info_after_validator_function(
-            function=cls,
-            schema=validation_schema,
-            serialization=json_serialization_schema,
-        )
-
-        schema = core_schema.json_or_python_schema(
-            json_schema=json_schema,
-            python_schema=python_schema,
-        )
-
-        return schema
 
     def pydantic_serializer(self) -> SchemaSerializer:
         """This is needed due to issue:
         https://github.com/pydantic/pydantic/issues/7779
         """
-        validation_schema = core_schema.any_schema()
-
-        python_serialization_schema = core_schema.plain_serializer_function_ser_schema(
-            lambda x: x, return_schema=validation_schema
-        )
-        python_schema = core_schema.any_schema(
-            serialization=python_serialization_schema,
+        serialization = core_schema.wrap_serializer_function_ser_schema(
+            _serialize_frozendict,
+            schema=core_schema.any_schema(),
+            info_arg=True,
         )
 
-        json_serialization_schema = core_schema.plain_serializer_function_ser_schema(
-            dict, return_schema=validation_schema, when_used="json"
-        )
-        json_schema = core_schema.any_schema(
-            serialization=json_serialization_schema,
-        )
-
-        schema = core_schema.json_or_python_schema(
-            json_schema=json_schema,
-            python_schema=python_schema,
-        )
-
-        return SchemaSerializer(schema)
+        return SchemaSerializer(core_schema.any_schema(serialization=serialization))
 
     FrozenDict.__get_pydantic_core_schema__ = classmethod(  # type: ignore
         get_pydantic_core_schema
