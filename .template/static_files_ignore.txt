@@ -1,6 +1,8 @@
 # Optional list of files which are actually static in the template
 # but are allowed to have different content in the current repository
 
+.devcontainer/license_header.txt
+
 scripts/check_license.py
 scripts/update_config_docs.py
 scripts/update_openapi_docs.py
