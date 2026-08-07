@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 readme = "README.md"
 authors = [
     { name = "Kersten Henrik Breuer", email = "kersten-breuer@outlook.com" },
-    { name = "German Human Genome Phenome Archive (GHGA)", email = "contact@ghga.de" },
+    { name = "The GHGA Authors", email = "contact@ghga.de" },
 ]
 requires-python = ">=3.13"
 classifiers = [
@@ -24,7 +24,7 @@ name = "ghga-arcticfreeze"
 version = "0.1.2"
 description = "Enjoy Python on the rocks with deeply (recursively) frozen data structures."
 maintainers = [
-    { name = "German Human Genome Phenome Archive (GHGA)", email = "contact@ghga.de" },
+    { name = "The GHGA Authors", email = "contact@ghga.de" },
 ]
 dependencies = [
     "immutabledict >= 4.3.1, <5",
