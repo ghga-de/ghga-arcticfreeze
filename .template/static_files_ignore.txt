@@ -1,6 +1,7 @@
 # Optional list of files which are actually static in the template
 # but are allowed to have different content in the current repository
 
+.devcontainer/Dockerfile
 .devcontainer/license_header.txt
 
 scripts/check_license.py

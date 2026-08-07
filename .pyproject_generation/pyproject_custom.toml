@@ -1,6 +1,6 @@
 [project]
 name = "ghga-arcticfreeze"
-version = "0.1.2"
+version = "1.0.0"
 description = "Enjoy Python on the rocks with deeply (recursively) frozen data structures."
 authors = [
     { name = "Kersten Henrik Breuer", email = "kersten-breuer@outlook.com" },

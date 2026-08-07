@@ -12,7 +12,7 @@ authors = [
 ]
 requires-python = ">=3.13"
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.13",
@@ -21,7 +21,7 @@ classifiers = [
     "Intended Audience :: Developers",
 ]
 name = "ghga-arcticfreeze"
-version = "0.1.2"
+version = "1.0.0"
 description = "Enjoy Python on the rocks with deeply (recursively) frozen data structures."
 maintainers = [
     { name = "The GHGA Authors", email = "contact@ghga.de" },
