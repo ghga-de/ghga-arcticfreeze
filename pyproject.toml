@@ -22,7 +22,7 @@ classifiers = [
     "Intended Audience :: Developers",
 ]
 name = "ghga-arcticfreeze"
-version = "0.1.1"
+version = "0.1.2"
 description = "Enjoy Python on the rocks with deeply (recursively) frozen data structures."
 maintainers = [
     { name = "German Human Genome Phenome Archive (GHGA)", email = "contact@ghga.de" },
