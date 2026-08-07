@@ -1,4 +1,5 @@
-# Copyright 2024 Kersten Henrik Breuer
+# Copyright 2021 - 2026 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# for the German Human Genome-Phenome Archive (GHGA)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,12 +15,12 @@
 #
 """Contains utils for working with dependencies, lock files, etc."""
 
+import tomllib
 from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
-import stringcase
-import tomli
+import casefy
 
 
 def exclude_from_dependency_list(*, package_name: str, dependencies: list) -> list:
@@ -43,7 +44,7 @@ def remove_self_dependencies(pyproject: dict) -> dict:
 
     project_metadata = modified_pyproject["project"]
 
-    package_name = stringcase.spinalcase(project_metadata.get("name"))
+    package_name = casefy.kebabcase(project_metadata.get("name"))
 
     if not package_name:
         raise ValueError("The provided project metadata does not contain a name.")
@@ -68,7 +69,6 @@ def remove_self_dependencies(pyproject: dict) -> dict:
 def get_modified_pyproject(pyproject_toml_path: Path) -> dict[str, Any]:
     """Get a copy of pyproject.toml with any self-referencing dependencies removed."""
     with open(pyproject_toml_path, "rb") as pyproject_toml:
-        pyproject = tomli.load(pyproject_toml)
+        pyproject = tomllib.load(pyproject_toml)
 
-    modified_pyproject = remove_self_dependencies(pyproject)
-    return modified_pyproject
+    return remove_self_dependencies(pyproject)

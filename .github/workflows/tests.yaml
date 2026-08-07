@@ -1,29 +1,38 @@
-name: Tests
+name: Run test suite and measure coverage
 
 on: push
 
 jobs:
   tests:
+    name: Run test suite
+
     runs-on: ubuntu-latest
-    name: Tests
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        id: checkout
+        uses: actions/checkout@v6
 
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
+      - name: Common steps
+        id: common
+        uses: ghga-de/gh-action-common@v7
         with:
-          python-version: 3.9
+          python-version: '3.13'
 
-      - name: Install Dependencies
-        shell: bash
+      - name: Run tests
+        id: pytest
         run: |
-          pip install --no-deps -r ./lock/requirements-dev.txt
-          pip install --no-deps .
+          export ${{ steps.common.outputs.CONFIG_YAML_ENV_VAR_NAME }}="${{ steps.common.outputs.CONFIG_YAML }}"
 
-      - id: pytest
-        run: |
           pytest \
-            --cov=src \
+            --cov="${{ steps.common.outputs.PACKAGE_NAME }}" \
             --cov-report=xml \
             tests
+
+      - name: Upload coverage to coveralls
+        id: coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: coverage.xml
+          fail-on-error: false

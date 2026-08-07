@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-# Copyright 2024 Kersten Henrik Breuer
+# Copyright 2021 - 2026 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# for the German Human Genome-Phenome Archive (GHGA)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,6 +28,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 import tomli_w
+
 from script_utils import cli, deps
 
 REPO_ROOT_DIR = Path(__file__).parent.parent.resolve()
@@ -98,13 +100,7 @@ def compile_lock_file(
 
     print(f"Updating '{output.name}'...")
 
-    command = [
-        "uv",
-        "pip",
-        "compile",
-        "--refresh",
-        "--generate-hashes",
-    ]
+    command = ["uv", "pip", "compile", "--refresh", "--generate-hashes", "--no-header"]
 
     if upgrade:
         command.append("--upgrade")

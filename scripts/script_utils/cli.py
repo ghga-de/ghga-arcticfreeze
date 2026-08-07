@@ -1,4 +1,5 @@
-# Copyright 2024 Kersten Henrik Breuer
+# Copyright 2021 - 2026 Universität Tübingen, DKFZ, EMBL, and Universität zu Köln
+# for the German Human Genome-Phenome Archive (GHGA)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,6 +23,13 @@ def echo_success(message: str):
     """Print a success message."""
 
     styled_message = typer.style(text=message, fg=typer.colors.GREEN)
+    typer.echo(styled_message)
+
+
+def echo_warning(message: str):
+    """Print a warning message."""
+
+    styled_message = typer.style(text=message, fg=typer.colors.YELLOW)
     typer.echo(styled_message)
 
 
