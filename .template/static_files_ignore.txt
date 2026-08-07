@@ -17,4 +17,6 @@ scripts/update_readme.py
 .readme_generation/readme_template.md
 .readme_generation/README.md
 
+.pyproject_generation/pyproject_template.toml
+
 LICENSE
