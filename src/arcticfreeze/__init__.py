@@ -15,13 +15,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Main entrypoint of the package."""
+"""A package to produce deeply (recursively) frozen Python data structures."""
 
+from importlib.metadata import version
 
-def run():
-    """Run the package."""
-    ...
+from ._internal._converters import STANDARD_CONVERTERS, Converter
+from ._internal.freeze import ConverterNotFoundError, freeze
+from ._internal.frozendict import FrozenDict
 
+__all__ = [
+    "STANDARD_CONVERTERS",
+    "Converter",
+    "ConverterNotFoundError",
+    "FrozenDict",
+    "freeze",
+]
 
-if __name__ == "__main__":
-    run()
+# The import path is `arcticfreeze` (as upstream), but this fork is distributed
+# under the name `ghga-arcticfreeze`, so the distribution name is stated explicitly:
+__version__ = version("ghga-arcticfreeze")

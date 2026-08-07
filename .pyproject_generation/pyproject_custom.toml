@@ -1,18 +1,22 @@
 [project]
-# please adapt to package name
-name = "ghga_arcticfreeze"
-version = "0.1.0"
-description = "GHGA-Arcticfreeze - a short description"
+name = "ghga-arcticfreeze"
+version = "0.1.2"
+description = "Enjoy Python on the rocks with deeply (recursively) frozen data structures."
+authors = [
+    { name = "Kersten Henrik Breuer", email = "kersten-breuer@outlook.com" },
+    { name = "German Human Genome Phenome Archive (GHGA)", email = "contact@ghga.de" },
+]
+maintainers = [
+    { name = "German Human Genome Phenome Archive (GHGA)", email = "contact@ghga.de" },
+]
 dependencies = [
-    "typer >= 0.25.1",
-    "pydantic >= 2.13.0, <3",
     "immutabledict >= 4.3.1, <5",
 ]
 
-[project.urls]
-# please adapt to package name
-Repository = "https://github.com/ghga-de/ghga-arcticfreeze"
+[project.optional-dependencies]
+pydantic = [
+    "pydantic >= 2.13.0, <3",
+]
 
-[project.scripts]
-# please adapt to package name
-ghga-arcticfreeze = "ghga_arcticfreeze.__main__:run"
+[project.urls]
+Repository = "https://github.com/ghga-de/ghga-arcticfreeze"

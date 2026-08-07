@@ -7,6 +7,7 @@ build-backend = "setuptools.build_meta"
 [project]
 readme = "README.md"
 authors = [
+    { name = "Kersten Henrik Breuer", email = "kersten-breuer@outlook.com" },
     { name = "German Human Genome Phenome Archive (GHGA)", email = "contact@ghga.de" },
 ]
 requires-python = ">=3.13"
@@ -20,23 +21,26 @@ classifiers = [
     "Topic :: Software Development :: Libraries",
     "Intended Audience :: Developers",
 ]
-name = "ghga_arcticfreeze"
-version = "0.1.0"
-description = "GHGA-Arcticfreeze - a short description"
+name = "ghga-arcticfreeze"
+version = "0.1.1"
+description = "Enjoy Python on the rocks with deeply (recursively) frozen data structures."
+maintainers = [
+    { name = "German Human Genome Phenome Archive (GHGA)", email = "contact@ghga.de" },
+]
 dependencies = [
-    "typer >= 0.25.1",
-    "pydantic >= 2.13.0, <3",
     "immutabledict >= 4.3.1, <5",
 ]
 
 [project.license]
 text = "Apache 2.0"
 
+[project.optional-dependencies]
+pydantic = [
+    "pydantic >= 2.13.0, <3",
+]
+
 [project.urls]
 Repository = "https://github.com/ghga-de/ghga-arcticfreeze"
-
-[project.scripts]
-ghga-arcticfreeze = "ghga_arcticfreeze.__main__:run"
 
 [tool.setuptools.packages.find]
 where = [

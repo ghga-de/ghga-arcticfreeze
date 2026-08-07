@@ -19,7 +19,7 @@
 
 import pytest
 
-from ghga_arcticfreeze import freeze
+from arcticfreeze import freeze
 from tests.cases import INVALID_CASES, VALID_CASES, InvalidTestCase, ValidTestCase
 
 
@@ -30,7 +30,12 @@ from tests.cases import INVALID_CASES, VALID_CASES, InvalidTestCase, ValidTestCa
 )
 def test_valid_inputs(test_case: ValidTestCase):
     """Test the arctic freeze function with valid inputs."""
-    assert freeze(test_case.inputs) == test_case.expected_outputs
+    observed_outputs = freeze(test_case.inputs)
+
+    assert observed_outputs == test_case.expected_outputs
+    # Equality alone is not enough, as e.g. `set(...) == frozenset(...)` holds even
+    # though only the latter is immutable:
+    assert type(observed_outputs) is type(test_case.expected_outputs)
 
 
 @pytest.mark.parametrize(

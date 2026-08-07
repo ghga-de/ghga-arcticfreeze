@@ -7,8 +7,7 @@ services:
         # [Choice] Install Node.js
         INSTALL_NODE: "false"
         NODE_VERSION: "lts/*"
-        # Please adapt to package name:
-        PACKAGE_NAME: "ghga_arcticfreeze"
+        PACKAGE_NAME: "arcticfreeze"
         # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
         USER_UID: 1000
         USER_GID: 1000

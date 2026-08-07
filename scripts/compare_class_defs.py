@@ -18,8 +18,8 @@
 
 import inspect
 
-# from ghga_arcticfreeze.core.handler import HandlerClass
-# from ghga_arcticfreeze.ports.inbound.handler import HandlerClassPort
+# from arcticfreeze.core.handler import HandlerClass
+# from arcticfreeze.ports.inbound.handler import HandlerClassPort
 from rich import box
 from rich.console import Console
 from rich.style import Style

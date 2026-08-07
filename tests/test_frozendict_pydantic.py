@@ -25,7 +25,7 @@ import pytest
 from immutabledict import immutabledict
 from pydantic import BaseModel, ConfigDict
 
-from ghga_arcticfreeze import FrozenDict
+from arcticfreeze import FrozenDict
 
 
 def _contains_frozen(obj: Any) -> bool:

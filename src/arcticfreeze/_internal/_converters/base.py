@@ -19,14 +19,12 @@
 
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Final, TypeVar
+from typing import Final
 
 DEFAULT_PRIORITY: Final = 0
 STANDARD_PRIMITIVE_PRIORITY: Final = 200
 STANDARD_NON_PRIMITIVE_IMMUTABLE_PRIORITY: Final = 100
 STANDARD_MUTABLE_PRIORITY: Final = -100
-
-InputObject = TypeVar("InputObject")
 
 
 @dataclass(frozen=True)
