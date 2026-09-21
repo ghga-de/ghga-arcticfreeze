@@ -2,11 +2,24 @@
 
 # arcticfreeze
 
-> **Note:** This is a fork of [KerstenBreuer/arcticfreeze](https://github.com/KerstenBreuer/arcticfreeze)
-> maintained by the [German Human Genome-Phenome Archive (GHGA)](https://www.ghga.de/).
-> It was created to bring in fixes and updates required by GHGA-related projects.
-> Many thanks to Kersten Breuer for the initial implementation.
-> The distribution is published as `ghga-arcticfreeze`, but the import path remains
+> [!IMPORTANT]
+> **This repository is archived and no longer maintained.**
+>
+> Development of this library continues in the GHGA mono repository at
+> [ghga-de/ghga](https://github.com/ghga-de/ghga), where it now lives under
+> [`libs/ghga-arcticfreeze`](https://github.com/ghga-de/ghga/tree/main/libs/ghga-arcticfreeze).
+> Please open issues and pull requests there.
+>
+> This repository is kept read-only for its history. The documentation below
+> describes the state of the code as of the last standalone release made here.
+>
+> This library is a fork of
+> [KerstenBreuer/arcticfreeze](https://github.com/KerstenBreuer/arcticfreeze)
+> maintained by the
+> [German Human Genome-Phenome Archive (GHGA)](https://www.ghga.de/). It was
+> created to bring in fixes and updates required by GHGA-related projects.
+> Many thanks to Kersten Breuer for the initial implementation. The distribution
+> is published as `ghga-arcticfreeze`, but the import path remains
 > `arcticfreeze`, so it is a drop-in replacement for the upstream package.
 
 Enjoy Python on the rocks with deeply (recursively) frozen data structures.
